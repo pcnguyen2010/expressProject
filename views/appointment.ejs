@@ -1,0 +1,48 @@
+<html lang="us">
+<%- include('./include/header.ejs') %>
+<body>
+    <%- include('./include/top.ejs')  %>
+    <%- include('./include/center_left_nav.ejs')  %>
+    <div class="central-brief-message"></div>
+    <form action="/appointment" method="post">
+        <div class="central-form">
+            <div>
+                <label> Your Name: </label>
+            </div>
+            <div>
+                <input type="text" id="customer_name" name="customer_name" placeholder="Your name.." required>
+            </div>
+            <div>
+                <label>Date/Time:</label>
+            </div>
+            <div>
+                <input type="text" id="appointment" name="appointment" placeholder="Enter your desired date.." required>
+            </div>
+            <div>
+                <label>Employee Name:</label>
+            </div>
+            <div>
+                <select id="employee_name" name="employee_name">
+                    <option value="Ty">Ty</option>
+                    <option value="Cuong">Cuong</option>
+                    <option value="Phuc">Phuc</option>
+                </select>
+            </div>
+            <div>
+                <label>Note:</label>
+            </div>
+            <div>
+                <textarea  id="note" name="note" placeholder="Write something.." style="height:150px"></textarea>
+            </div>
+            <div>
+                <label></label>
+            </div>
+            
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </div>
+    </form>
+    <%- include('./include/footer.ejs') %>
+</body>
+</html>
