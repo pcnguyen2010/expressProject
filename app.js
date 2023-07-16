@@ -5,7 +5,7 @@ const Blog = require('./models/blog');
 //create instance of express
 const app = exp();
 
-const dbURI = 'mongodb+srv://executioner:executioner@node-tuts.2qcrgsh.mongodb.net/node-tuts?retryWrites=true&w=majority';
+const dbURI = 'mongodb+srv://test:test@node-tuts.2qcrgsh.mongodb.net/node-tuts?retryWrites=true&w=majority';
 mgoose.connect(dbURI)
 .then((result) => app.listen(3000),console.log('connect'))//only listen to request when database connect
 .catch((err) => console.log(err));
