@@ -2,7 +2,7 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const mgoose = require('mongoose');
 const app = express();
-const dbURI = 'mongodb+srv://executioner:executioner@node-tuts.2qcrgsh.mongodb.net/node-tuts?retryWrites=true&w=majority';
+const dbURI = 'mongodb+srv://test:test@node-tuts.2qcrgsh.mongodb.net/node-tuts?retryWrites=true&w=majority';
 const PORT = 2000;
 const ApptModel = require('./models/appointmentModel');
 const AppointmentModel = require('./models/appointmentModel');
