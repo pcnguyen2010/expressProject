@@ -1,0 +1,32 @@
+<html lang="us">
+<%- include('./include/header.ejs') %>
+<body>
+    <%- include('./include/top.ejs')  %>
+    <%- include('./include/center_left_nav.ejs')  %>
+    
+    <% if(empModels.length >0){ 
+        empModels.forEach(empModel =>{%>
+            <div class="central-employee">
+                <div style="flex-grow: 1;">
+                    <img src='/employee/<%=empModel.imageUrl %>' style="width: 170px; height: 100%;"/>
+                </div>
+                <div style="flex-grow: 2;margin-left: 5px;">
+                    Name:&nbsp;&nbsp;<%=empModel.first_name%>&nbsp;<%=empModel.last_name%>
+                    <br>Phone:&nbsp;&nbsp;<%=empModel.phone%>
+                    <br>Availability:&nbsp;&nbsp;<%=empModel.availability%>
+                    <br>Work Schedule:&nbsp;&nbsp;<%=empModel.work_schedule%>
+                    <br>Skill:&nbsp;&nbsp;<%=empModel.skill%>
+                    <br>Rating:&nbsp;&nbsp; ******
+                    <br>Comment:&nbsp;&nbsp; 144 comments
+                    <br><a href="/comment/<%=empModel._id%>">Add Comment</a>
+                </div>
+            </div>
+    <%})%>
+    <% } else{%>
+        <div class="central-employee">">
+            <h3 class="title">No record available</h3>
+        </div>
+    <% } %>
+    <%- include('./include/footer.ejs') %>
+</body>
+</html>

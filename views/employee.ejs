@@ -3,16 +3,100 @@
 <body>
     <%- include('./include/top.ejs')  %>
     <%- include('./include/center_left_nav.ejs')  %>
-    
 
-    <div class="central-employee">
-        <div style="border-style: solid;border-color: black;">Test 1</div>
-        <div style="border-style: solid;border-color: black;">
-            Your Name:
-            <br>Your Appointment:
+    <div class="central-brief-message"></div>
+    <form action="/employee" method="post"  encType="multipart/form-data">
+        <div class="central-form">
+            <div>
+                <label> First Name: </label>
+            </div>
+            <div>
+                <input type="text" id="first_name" name="first_name" required>
+            </div>
+            <div>
+                <label> Last Name: </label>
+            </div>
+            <div>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
+            <div>
+                <label>Address:</label>
+            </div>
+            <div>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div>
+                <label>Phone:</label>
+            </div>
+            <div>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div>
+                <label>Skill:</label>
+            </div>
+            <div>
+                <input type="text" id="skill" name="skill" required>
+            </div>
+            <div>
+                <label>Schedule:</label>
+            </div>
+            <div>
+                <input type="text" id="work_schedule" name="work_schedule" required>
+            </div>
+            <div>
+                <label>Experience:</label>
+            </div>
+            <div>
+                <select id="experience" name="experience">
+                    <option value="1">1 Year</option>
+                    <option value="2">2 Year</option>
+                    <option value="3">3 Year</option>
+                    <option value="4">4 Year</option>
+                    <option value="5">5 Year</option>
+                    <option value="6">6 Year</option>
+                    <option value="7">7 Year</option>
+                    <option value="8">8 Year</option>
+                    <option value="9">9 Year</option>
+                    <option value="10">10 Year</option>
+                    <option value="11">11 Year</option>
+                    <option value="12">12 Year</option>
+                    <option value="13">13 Year</option>
+                    <option value="14">14 Year</option>
+                    <option value="15">15 Year</option>
+                    <option value="16">16 Year</option>
+                </select>
+            </div>
+            <div>
+                <label>Availability:</label>
+            </div>
+            <div>
+                <select id="availability" name="availability">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div>
+                <label>Upload Your Image:</label>
+            </div>
+            <div>
+                <input type="file" id="imgUrl" name="imgUrl" required/>
+            </div>
+            <input type="hidden" id="imageUrl" name="imageUrl" value="/image/employee/">
+            <div>
+                <label></label>
+            </div>
+            <div>
+                <input type="submit" value="Submit">
+            </div>
         </div>
-    </div>
-
+    </form>
     <%- include('./include/footer.ejs') %>
+    <script>
+        document.getElementById('imgUrl').onchange = function () {
+            let fileName = this.value;
+            fileName = fileName.replace(/.*[\/\\]/, '');
+            document.getElementById('imageUrl').value = fileName;
+        };
+    </script>
 </body>
 </html>

@@ -4,31 +4,49 @@ const Schema = mgoose.Schema;
 const empSchema = new Schema({
     first_name: {
         type: String,
-        required: true,
+        required: [true,'First Name is required field.'],
     },
     last_name: {
         type: String,
-        required: true,
+        required: [true,'Last Name is required field.'],
     },
     phone: {
         type: String,
-        required: true,
+        required: [true,'Phone is required field.'],
+        unique: true
     },
     email: {
         type: String,
         required: false,
     },
-    image_url: {
+    imageUrl: {
+        type: String,
+        required: [true,'Upload Image is required field.'],
+    },
+    address: {
+        type: String,
+        required: [true,'Address is required field.'],
+    },
+    skill: {
         type: String,
         required: false,
     },
-    address: {
-        type: Object,
+    experience: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
+    availability: {
+        type: Boolean,
         required: false,
     },
-    skill: {
-        type: Object,
+    work_schedule: {
+        type: String,
         required: false,
+    },
+    rating: {
+        type: Number,
+        required: false, 
     }
 },{timestamps: true});
 

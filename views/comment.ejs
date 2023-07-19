@@ -1,0 +1,26 @@
+<html lang="us">
+<%- include('./include/header.ejs') %>
+<body>
+    <%- include('./include/top.ejs')  %>
+    <%- include('./include/center_left_nav.ejs')  %>
+    <div class="central-brief-message"></div>
+    <form action="/comment" method="post">
+        <div class="central-form">
+            <input type="hidden" id="employee_id" name="employee_id" value="<%=employee_id%>">
+            <div>
+                <label>Add Comment: </label>
+            </div>
+            <div>
+                <input type="text" id="comment" name="comment" required>
+            </div>
+            <div>
+                <label></label>
+            </div>
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </div>
+    </form>
+    <%- include('./include/footer.ejs') %>
+</body>
+</html>
