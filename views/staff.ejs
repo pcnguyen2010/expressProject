@@ -17,7 +17,7 @@
                     <br>Work Schedule:&nbsp;&nbsp;<%=empModel.work_schedule%>
                     <br>Skill:&nbsp;&nbsp;<%=empModel.skill%>
                     <br>Rating:&nbsp;&nbsp; ******
-                    <br>Comment:&nbsp;&nbsp; 144 comments
+                    <br>Comment:&nbsp;&nbsp; <%=empModel.comment_count%> <a href="/viewcomment/<%=empModel._id%>">comments</a>
                     <br><a href="/comment/<%=empModel._id%>">Add Comment</a>
                 </div>
             </div>

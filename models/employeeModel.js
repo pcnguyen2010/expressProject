@@ -44,6 +44,11 @@ const empSchema = new Schema({
         type: String,
         required: false,
     },
+    comment_count: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
     rating: {
         type: Number,
         required: false, 
