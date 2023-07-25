@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const dotenv = require('dotenv');
 const fileUpload = require('express-fileupload');
 const mgoose = require('mongoose');
@@ -9,7 +10,18 @@ const router = express.Router();
 const ApptModel = require('./models/appointmentModel');
 const AppointmentModel = require('./models/appointmentModel');
 const EmployeeModel = require('./models/employeeModel');
+const UserModel = require('./models/userModel');
+const isAuth = require("./middleware/is_auth");
+
 const cmtController = require('./controller/commentController');
+const loginController = require("./controller/loginController");
+
+//const mongoDBSession = require('connect-mongodb-session')(session);
+
+
+//const MongoDBStore = require('connect-mongo');
+
+const StoreModel = require('./models/storeModel');
 
 dotenv.config({path: './config.env'});
 console.log('PORT '+process.env.PORT);
@@ -26,11 +38,26 @@ app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use(router);
 
+app.use(session({
+    secret: 'just for testing',
+    resave: false,
+    saveUninitialized: false,
+    /*
+    store: MongoDBStore.create({
+        mongoUrl: process.env.CON_STR
+    })
+    */
+   store: StoreModel
+}))
+
 //register view engine
 app.set('view engine','ejs');
 app.set('views','views');
 
 app.get('/practice',(req,res)=>{
+    req.session.isAuth = true;
+    console.log(req.session);
+    console.log("session_id: "+req.session.id);
     res.render('practice',{title: 'Home'});
 });
 
@@ -82,7 +109,7 @@ app.get('/staff',(req,res)=>{
    })
 });
 
-app.get('/employee',(req,res)=>{
+app.get('/employee',isAuth,(req,res)=>{
     res.render('employee',{title: 'Add employee'});
 });
 
@@ -125,9 +152,24 @@ app.post('/fileupload',(req,res)=>{
 });
 
 
-router.route('/comment/:id').get(cmtController.getAllComments);
+router.route('/comment/:id/:first_name/:last_name').get(cmtController.getAllComments);
 router.route('/comment').post(cmtController.createComment);
+router.route('/viewcomment/:id').get(cmtController.getComment);
 
+app.get("/login", loginController.login_get);
+app.post("/login", loginController.login_post);
+app.get("/register", loginController.register_get);
+app.post("/register", loginController.register_post);
+
+/*
+app.get('/login',(req,res)=>{
+    res.render('login',{title: 'Login'});
+});
+
+app.get('/register',(req,res)=>{
+    res.render('register',{title: 'Register'});
+});
+*/
 //test database
 app.get('/add-appointment',(req,res)=>{
     const apptVar = new AppointmentModel({
@@ -161,4 +203,8 @@ function addFile(req,res){
 }
 
 //app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
+
+const TestModel = require('./models/testModel');
+TestModel.negative(10,4);
+TestModel.positive(2,4);
 

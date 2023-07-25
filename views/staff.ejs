@@ -18,7 +18,7 @@
                     <br>Skill:&nbsp;&nbsp;<%=empModel.skill%>
                     <br>Rating:&nbsp;&nbsp; ******
                     <br>Comment:&nbsp;&nbsp; <%=empModel.comment_count%> <a href="/viewcomment/<%=empModel._id%>">comments</a>
-                    <br><a href="/comment/<%=empModel._id%>">Add Comment</a>
+                    <br><a href="/comment/<%=empModel._id%>/<%=empModel.first_name%>/<%=empModel.last_name%>">Add Comment</a>
                 </div>
             </div>
     <%})%>

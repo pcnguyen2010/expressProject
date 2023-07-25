@@ -7,7 +7,9 @@ let empID = -1;
 
 module.exports.getAllComments = (req,res) => {
     empID = req.params.id;
-    res.render('comment',{title: 'Add Comment',employee_id:empID});
+    lt_name = req.params.last_name;
+    f_name = req.params.first_name;
+    res.render('comment',{title: 'Add Comment',employee_id:empID,first_name:f_name,last_name:lt_name});
 }
 
 module.exports.getComment = async(req,res) => {
