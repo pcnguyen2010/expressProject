@@ -1,8 +1,8 @@
-name: Publish Docker Image
+name: Publish Docker image
 
 on:
   push:
-    branches: main
+    branches: develop
 
 jobs:
   push_to_registry:
