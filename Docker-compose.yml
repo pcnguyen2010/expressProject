@@ -10,3 +10,5 @@ services:
       PORT: "4000"
     ports: 
       - "550:4000"
+    volumes:
+      -  C:\image:/app/image
