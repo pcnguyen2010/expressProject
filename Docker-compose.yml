@@ -1,0 +1,12 @@
+version: '2.4'
+services: 
+  node-app-compose:
+    container_name: node-compose-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    environment:
+      PORT: "4000"
+    ports: 
+      - "550:4000"
